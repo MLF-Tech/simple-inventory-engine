@@ -28,5 +28,17 @@ Compile: javac Main.java
 
 Run: java Main
 
-—
-Developer by _Maria Laura Fagioli - Full Stack Web Developer_
+---
+
+Developed by _Maria Laura Fagioli - Full Stack Web Developer_
+
+## Next steps
+
+- Try small edits: add another product or change initial stock to see how the program reacts.
+- Improve console messages to be clearer when orders succeed or fail.
+- Check inputs: ensure order quantities are positive numbers before processing.
+- Practice the edit/compile/run cycle: edit code, recompile with `javac *.java`, then run `java Main` to see results.
+- Keep sample runs: save a few console outputs to show examples of program behavior.
+- Tests (JUnit): write basic tests to check stock updates and missing products.
+- JSON: save or load product lists from a small JSON file to keep data between runs.
+- REST API: connect this logic to a web server (using Spring Boot) to allow external applications to check stock and process orders via HTTP requests (GET/POST) and JSON responses.
