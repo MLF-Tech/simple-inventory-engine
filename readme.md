@@ -1,44 +1,45 @@
-## **Java Inventory Engine (JDK 26)**
+**Java Inventory Engine: API Evolution**
+This project marks my transition from core Java logic to modern backend infrastructure. Originally built as a CLI tool following my 360/360 graduation from CodeFactory Vienna, it is currently being refactored into a RESTful API.
 
-This is my first Java project, developed right after graduating from CodeFactory Vienna with a perfect score of 360/360.
+**Objective**
+To translate my professional experience in ERP systems (JTL-Wawi) and Operations into a scalable backend service. The engine handles real-world business scenarios like stock depletion, inventory integrity, and automated error handling.
 
-**Why I built this**
-Coming from a professional background in Strategic Project Management and ERP infrastructure (such as JTL-Wawi), I wanted to rebuild a warehouse stock logic from scratch. My goal was to translate my operational experience into clean, functional code that handles real-world business scenarios.
+**Technical Stack**
+Language: Java 21/26
 
-**Key Technical Features**
-Level 2 Troubleshooting Logic: I implemented custom exception handling using try-catch blocks. Instead of letting the program crash, the system catches business errors (like insufficient stock) and logs them gracefully—just like the technical support flows I managed in my previous roles.
+Framework: Spring Boot 3.x (Migration in progress)
 
-**Data Integrity & OOP**
-I used core Object-Oriented Programming principles to separate the data model (Product) from the business logic (InventoryManager), ensuring that product data is protected and modified only through secure methods.
+Database: PostgreSQL (Integration via JPA/Hibernate)
 
-**Modern Java**
-I chose to use JDK 26 to immediately work with the latest features of the language, proving my ability to quickly learn and implement modern technology stacks.
+Environment: Docker (Planned for containerized deployment)
+
+**Key Engineering Features**
+Logic-to-Business Alignment: Implemented "Level 2 Troubleshooting" logic. The system doesn't just run; it manages business exceptions (e.g., stock insufficiency) gracefully, mimicking professional technical support flows.
+
+OOP Architecture: Clear separation of concerns between Data Models (Product), Persistence Layer (Repository), and Business Logic (Service).
+
+Resilient Code: Transitioning from local collections to persistent storage to ensure data integrity across system restarts.
 
 **Project Structure**
-Product.java: Defines the product model and the core logic for stock reduction.
+src/main/java/com/mlf/tech/
 
-**InventoryManager.java**
-Manages the product collection and processes orders.
+Main.java: Spring Boot entry point.
 
-**Main.java**
-The entry point used to test different scenarios (successful orders, stock alerts, and "product not found" errors).
+Product.java: Data model with JPA annotations.
 
-**How to Run**
-Compile: javac Main.java
+InventoryController.java: REST endpoints for external system communication (n8n/Make/Web).
 
-Run: java Main
+pom.xml: Dependency management for Spring Web and PostgreSQL.
 
----
+**Roadmap**
+[x] Initial Java Logic & OOP Structure
 
-Developed by _Maria Laura Fagioli - Full Stack Web Developer_
+[x] Spring Boot Migration (Current Step)
 
-## Next steps
+[ ] Dockerization: Setting up a PostgreSQL container to remove local OS dependencies.
 
-- Try small edits: add another product or change initial stock to see how the program reacts.
-- Improve console messages to be clearer when orders succeed or fail.
-- Check inputs: ensure order quantities are positive numbers before processing.
-- Practice the edit/compile/run cycle: edit code, recompile with `javac *.java`, then run `java Main` to see results.
-- Keep sample runs: save a few console outputs to show examples of program behavior.
-- Tests (JUnit): write basic tests to check stock updates and missing products.
-- JSON: save or load product lists from a small JSON file to keep data between runs.
-- REST API: connect this logic to a web server (using Spring Boot) to allow external applications to check stock and process orders via HTTP requests (GET/POST) and JSON responses.
+[ ] API Documentation: Implementing Swagger/OpenAPI.
+
+[ ] Automation: Connecting the engine to an n8n workflow for automated stock alerts.
+
+Developed by Maria Laura Fagioli – Junior Full Stack Developer
