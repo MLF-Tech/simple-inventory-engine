@@ -32,4 +32,4 @@ As a **quick and self-learner**, I chose to build this project using the latest 
 
 ---
 
-_Developed by Maria Laura Fagioli – Junior Software Developer & Operations Specialist._
+_Developed by Maria Laura Fagioli – Junior Full-Stack Web Developer_
