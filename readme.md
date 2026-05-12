@@ -3,9 +3,11 @@
 This project marks my transition from core Java logic to modern backend infrastructure. Originally built as a CLI tool following my 360/360 graduation from CodeFactory Vienna, it is currently being refactored into a RESTful API.
 
 **Objective**
+
 To translate my professional experience in ERP systems (JTL-Wawi) and Operations into a scalable backend service. The engine handles real-world business scenarios like stock depletion, inventory integrity, and automated error handling.
 
 **Technical Stack**
+
 Language: Java 21/26
 
 Framework: Spring Boot 3.x (Migration in progress)
@@ -23,6 +25,7 @@ OOP Architecture: Clear separation of concerns between Data Models (Product), Pe
 Resilient Code: Transitioning from local collections to persistent storage to ensure data integrity across system restarts.
 
 **Project Structure**
+
 src/main/java/com/mlf/tech/
 
 Main.java: Spring Boot entry point.
@@ -34,6 +37,7 @@ InventoryController.java: REST endpoints for external system communication (n8n/
 pom.xml: Dependency management for Spring Web and PostgreSQL.
 
 **Roadmap**
+
 [x] Initial Java Logic & OOP Structure
 
 [x] Spring Boot Migration (Current Step)
