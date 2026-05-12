@@ -1,34 +1,64 @@
 package com.mlf.tech;
-import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import java.util.List;
 
+/**
+ * Service class that handles inventory logic.
+ * It connects the Product model with the PostgreSQL database via
+ * ProductRepository.
+ */
+@Service
 public class InventoryManager {
-    // List to store products, mimicking a database table
-    private List<Product> products = new ArrayList<>();
 
-    // Method to add a product to the catalog
+    @Autowired
+    private ProductRepository repository;
+
+    /**
+     * Persists a new product into the database.
+     * The null check addresses the "Null type safety" warning.
+     */
     public void addProduct(Product p) {
-        products.add(p);
+        if (p != null) {
+            repository.save(p);
+            System.out.println("LOG: Product successfully saved: " + p.getName());
+        }
     }
 
     /**
-     * Processes an order by searching for the product name.
-     * Demonstrates Level 2 troubleshooting by catching errors
-     * thrown by the Product class.
+     * Processes an order by checking stock levels in the database.
+     * Updates the stock quantity directly in PostgreSQL if the order is valid.
      */
     public void processOrder(String productName, int quantity) {
+        // Fetching the current state of inventory from Docker/PostgreSQL
+        List<Product> products = repository.findAll();
+
         for (Product p : products) {
-            if (p.getName().equalsIgnoreCase(productName)) {
+            // Case-insensitive search for the product name
+            if (p != null && p.getName().equalsIgnoreCase(productName)) {
                 try {
+                    // Logic from Product class to reduce stock
                     p.reduceStock(quantity);
+
+                    // Crucial: Persist the updated stock back to the database
+                    repository.save(p);
+
                     System.out.println("SUCCESS: Processed " + quantity + " units of " + productName);
                 } catch (Exception e) {
-                    // Handling the technical error gracefully
+                    // Level 2 troubleshooting: Catching insufficient stock errors
                     System.err.println("ALERT: " + e.getMessage());
                 }
-                return;
+                return; // Exit after finding and processing the product
             }
         }
-        System.out.println("ERROR: Product '" + productName + "' not found in inventory.");
+        System.out.println("ERROR: Product '" + productName + "' not found in database.");
+    }
+
+    /**
+     * Returns all products currently stored in the database.
+     */
+    public List<Product> getAllProducts() {
+        return repository.findAll();
     }
 }
