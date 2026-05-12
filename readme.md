@@ -1,46 +1,32 @@
-# Simple Inventory Engine
+## **Java Inventory Engine (JDK 26)**
 
-A small Java project to practice basic object-oriented programming and simple inventory logic. Written with beginners in mind — especially self-taught developers who are just starting out.
+This is my first Java project, developed right after graduating from CodeFactory Vienna with a perfect score of 360/360.
 
-Who this is for
-- New developers learning Java and how to structure a small program.
+**Why I built this**
+Coming from a professional background in Strategic Project Management and ERP infrastructure (such as JTL-Wawi), I wanted to rebuild a warehouse stock logic from scratch. My goal was to translate my operational experience into clean, functional code that handles real-world business scenarios.
 
-Files
-- Product.java — defines the Product object (fields, constructor, simple validation).
-- InventoryManager.java — holds and updates products, handles stock changes.
-- Main.java — a minimal entry point that shows example usage of the other classes.
-- *.class files — compiled output. You don't need to edit these.
+**Key Technical Features**
+Level 2 Troubleshooting Logic: I implemented custom exception handling using try-catch blocks. Instead of letting the program crash, the system catches business errors (like insufficient stock) and logs them gracefully—just like the technical support flows I managed in my previous roles.
 
-Prerequisites
-- Java JDK installed (Java 11+ recommended). JDK 26 works too but is optional.
-- A terminal (macOS Terminal, Windows PowerShell, or similar).
+**Data Integrity & OOP**
+I used core Object-Oriented Programming principles to separate the data model (Product) from the business logic (InventoryManager), ensuring that product data is protected and modified only through secure methods.
 
-Quick start
-1. Open a terminal in this folder.
-2. Compile all Java sources: 
-   javac *.java
-3. Run the program:
-   java Main
+**Modern Java**
+I chose to use JDK 26 to immediately work with the latest features of the language, proving my ability to quickly learn and implement modern technology stacks.
 
-If Main is inside a package, run it with its full package name from the project root, for example:
-   java com.example.Main
+**Project Structure**
+Product.java: Defines the product model and the core logic for stock reduction.
 
-Common problems & quick fixes
-- "javac: command not found": Install the JDK and add java/javac to your PATH.
-- "NoClassDefFoundError" or "ClassNotFoundException": Make sure you are in the project root and that the .class files are present. Check package declarations at the top of .java files.
-- Compilation errors show file names and line numbers — open that .java file and fix the code, then re-run javac.
+**InventoryManager.java**
+Manages the product collection and processes orders.
 
-Tips for learning and experimenting
-- Edit Product.java or InventoryManager.java to add simple features (e.g., product description, stock thresholds).
-- After changes, recompile with javac and run again.
-- Add print statements in Main.java to see program flow while you learn.
+**Main.java**
+The entry point used to test different scenarios (successful orders, stock alerts, and "product not found" errors).
 
-Contributing / Next steps
-- Improve tests or add simple example scenarios in Main.java.
-- Add a CONTRIBUTING.md if you want contributors to follow specific steps.
+**How to Run**
+Compile: javac Main.java
+
+Run: java Main
 
 —
-
-Author: Maria Laura Fagioli
-
-If you'd like this readme translated to Italian or shortened into a quick checklist, say so and it will be prepared.
+Developer by _Maria Laura Fagioli - Full Stack Web Developer_
