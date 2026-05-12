@@ -1,51 +1,53 @@
 **Java Inventory Engine: API Evolution**
 
-This project marks my transition from core Java logic to modern backend infrastructure. Originally built as a CLI tool following my 360/360 graduation from CodeFactory Vienna, it is currently being refactored into a RESTful API.
+This project demonstrates the transition from core Java logic to modern backend infrastructure. Originally developed as a CLI tool following my graduation from CodeFactory Vienna, it has been refactored into a Spring Boot service with full database persistence.
 
-**Objective**
+**Project Objective**
 
-To translate my professional experience in ERP systems (JTL-Wawi) and Operations into a scalable backend service. The engine handles real-world business scenarios like stock depletion, inventory integrity, and automated error handling.
+The goal is to translate professional experience in ERP systems (JTL-Wawi) and Operations into a scalable backend service. The engine handles real-world business scenarios such as stock depletion, inventory integrity, and automated error handling.
 
 **Technical Stack**
 
-Language: Java 21/26
+Language: Java 21
 
-Framework: Spring Boot 3.x (Migration in progress)
+Framework: Spring Boot 3.x
 
-Database: PostgreSQL (Integration via JPA/Hibernate)
+Database: PostgreSQL 15 (via Spring Data JPA/Hibernate)
 
-Environment: Docker (Planned for containerized deployment)
+Infrastructure: Docker & Docker Compose
 
 **Key Engineering Features**
 
-Logic-to-Business Alignment: Implemented "Level 2 Troubleshooting" logic. The system doesn't just run; it manages business exceptions (e.g., stock insufficiency) gracefully, mimicking professional technical support flows.
+Business-Logic Alignment: Implementation of "Level 2 Troubleshooting" logic to manage business exceptions (e.g., stock insufficiency) and ensure data integrity.
 
-OOP Architecture: Clear separation of concerns between Data Models (Product), Persistence Layer (Repository), and Business Logic (Service).
+Architecture: Strict separation of concerns between Data Models (Product), Persistence Layer (Repository), and Business Logic (Service).
 
-Resilient Code: Transitioning from local collections to persistent storage to ensure data integrity across system restarts.
+Containerization: Orchestrated PostgreSQL environment using Docker to ensure consistency across development and deployment stages.
+
+Persistence: Full migration from local collections to persistent storage, maintaining state across system restarts.
 
 **Project Structure**
 
-src/main/java/com/mlf/tech/
+The core logic resides in src/main/java/com/mlf/tech/:
 
-Main.java: Spring Boot entry point.
+SimpleInventoryEngineApplication.java: Entry point and automated integration test runner.
 
-Product.java: Data model with JPA annotations.
+Product.java: Entity model with JPA mapping.
 
-InventoryController.java: REST endpoints for external system communication (n8n/Make/Web).
+ProductRepository.java: Interface for database communication.
 
-pom.xml: Dependency management for Spring Web and PostgreSQL.
+InventoryManager.java: Service layer handling business logic.
 
 **Roadmap**
 
 [x] Initial Java Logic & OOP Structure
 
-[x] Spring Boot Migration (Current Step)
+[x] Spring Boot Migration & JPA Persistence
 
-[ ] Dockerization: Setting up a PostgreSQL container to remove local OS dependencies.
+[x] Dockerization (PostgreSQL Container)
 
-[ ] API Documentation: Implementing Swagger/OpenAPI.
+[ ] REST API Endpoints (Integration with n8n/Make)
 
-[ ] Automation: Connecting the engine to an n8n workflow for automated stock alerts.
+[ ] API Documentation (Swagger/OpenAPI)
 
 Developed by Maria Laura Fagioli – Junior Full Stack Developer
