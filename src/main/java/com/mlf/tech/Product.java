@@ -1,3 +1,5 @@
+package com.mlf.tech;
+
 /**
  * Simple Product model representing an item with an identifier, a name,
  * and a stock quantity.
@@ -14,8 +16,8 @@ public class Product {
     /**
      * Constructs a new Product.
      *
-     * @param id product identifier (should be unique for each product)
-     * @param name human-friendly product name
+     * @param id            product identifier (should be unique for each product)
+     * @param name          human-friendly product name
      * @param stockQuantity initial stock level (zero or positive)
      */
     public Product(String id, String name, int stockQuantity) {
