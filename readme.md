@@ -15,6 +15,7 @@ Database: PostgreSQL (Integration via JPA/Hibernate)
 Environment: Docker (Planned for containerized deployment)
 
 **Key Engineering Features**
+
 Logic-to-Business Alignment: Implemented "Level 2 Troubleshooting" logic. The system doesn't just run; it manages business exceptions (e.g., stock insufficiency) gracefully, mimicking professional technical support flows.
 
 OOP Architecture: Clear separation of concerns between Data Models (Product), Persistence Layer (Repository), and Business Logic (Service).
