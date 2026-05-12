@@ -1,24 +1,29 @@
 package com.mlf.tech;
 
-/**
- * Simple Product model representing an item with an identifier, a name,
- * and a stock quantity.
- *
- * Fields are private and exposed via getters. The reduceStock method
- * decreases the available stock and signals an error when the requested
- * removal amount exceeds the available stock.
- */
+import jakarta.persistence.*; // Essential for mapping Java objects to Database tables
+
+@Entity // Tells Spring Boot: "Map this class to a database table"
+@Table(name = "products") // Specifies the table name in PostgreSQL
 public class Product {
-    private String id;
-    private String name;
-    private int stockQuantity;
+
+    @Id // Defines the Primary Key for the table
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Database will auto-increment the ID (1, 2, 3...)
+    private Long internalId;
+
+    private String id; // This is your business SKU (e.g., "PROD-001")
+    private String name; // Name of the item
+    private int stockQuantity; // Number of items in stock
 
     /**
-     * Constructs a new Product.
-     *
-     * @param id            product identifier (should be unique for each product)
-     * @param name          human-friendly product name
-     * @param stockQuantity initial stock level (zero or positive)
+     * DEFAULT CONSTRUCTOR: Mandatory for JPA/Hibernate.
+     * It allows the system to create an empty object before filling it with
+     * database data.
+     */
+    public Product() {
+    }
+
+    /**
+     * Standard constructor for creating new products in your code.
      */
     public Product(String id, String name, int stockQuantity) {
         this.id = id;
@@ -26,46 +31,46 @@ public class Product {
         this.stockQuantity = stockQuantity;
     }
 
-    /**
-     * Returns the product identifier.
-     *
-     * @return id string
-     */
+    // GETTERS AND SETTERS: Required for Spring to access private fields
+    public Long getInternalId() {
+        return internalId;
+    }
+
+    public void setInternalId(Long internalId) {
+        this.internalId = internalId;
+    }
+
     public String getId() {
         return id;
     }
 
-    /**
-     * Returns the product name.
-     *
-     * @return name string
-     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
 
-    /**
-     * Returns the current stock quantity for this product.
-     *
-     * @return available units in stock
-     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public int getStockQuantity() {
         return stockQuantity;
     }
 
+    public void setStockQuantity(int stockQuantity) {
+        this.stockQuantity = stockQuantity;
+    }
+
     /**
-     * Reduces the stock by the given amount.
-     *
-     * Note: the method expects a positive amount. If the requested amount
-     * is greater than the available stock, this method throws an Exception
-     * describing the problem.
-     *
-     * @param amount number of units to remove from stock
-     * @throws Exception if amount is greater than the available stock
+     * Business logic to decrease stock level.
+     * Throws an exception if the requested amount is not available.
      */
     public void reduceStock(int amount) throws Exception {
         if (amount > stockQuantity) {
-            throw new Exception("Insufficient stock for product: " + name);
+            throw new Exception("Insufficient stock for: " + name);
         }
         this.stockQuantity -= amount;
     }
